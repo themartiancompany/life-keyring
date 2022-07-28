@@ -1,0 +1,27 @@
+[user]
+        email = pellegrinoprevete@gmail.com
+        name = Pellegrino Prevete
+	signingkey = 3D115DD206D92A0656C827BC8B686E3C22E4C2FA
+[commit]
+        gpgsign = true
+
+[gpg]
+        program = gpg2
+
+[diff]
+    tool = meld
+
+[difftool]
+    prompt = false
+
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+
+[merge]
+        tool = meld
+
+[color]
+        ui = auto
+
+[core]
+	editor = vim
