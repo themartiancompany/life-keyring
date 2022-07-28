@@ -877,7 +877,7 @@ def export_ownertrust(certs: List[Path], keyring_root: Path, output: Path) -> Li
     The output file format is compatible with `gpg --import-ownertrust` and lists the main fingerprint ID of all
     non-revoked keys as fully trusted.
     The exported file is used by pacman-key when importing a keyring (see
-    https://man.archlinux.org/man/pacman-key.8#PROVIDING_A_KEYRING_FOR_IMPORT).
+    https://life/man/pacman-key.8#PROVIDING_A_KEYRING_FOR_IMPORT).
 
     Parameters
     ----------
@@ -911,7 +911,7 @@ def export_revoked(certs: List[Path], keyring_root: Path, main_keys: Set[Fingerp
     The output file contains the fingerprints of all self-revoked keys and all keys for which at least two revocations
     by any main key exist.
     The exported file is used by pacman-key when importing a keyring (see
-    https://man.archlinux.org/man/pacman-key.8#PROVIDING_A_KEYRING_FOR_IMPORT).
+    https://man.life/man/pacman-key.8#PROVIDING_A_KEYRING_FOR_IMPORT).
 
     Parameters
     ----------
@@ -1133,19 +1133,19 @@ def build(
     target_dir.mkdir(parents=True, exist_ok=True)
     target_dir.touch()
 
-    keyring: Path = target_dir / Path("archlinux.gpg")
+    keyring: Path = target_dir / Path("life.gpg")
     export(working_dir=working_dir, keyring_root=keyring_root, output=keyring)
 
     trusted_main_keys = export_ownertrust(
         certs=[keyring_root / "main"],
         keyring_root=keyring_root,
-        output=target_dir / "archlinux-trusted",
+        output=target_dir / "life-trusted",
     )
     export_revoked(
         certs=[keyring_root],
         keyring_root=keyring_root,
         main_keys=set(trusted_main_keys),
-        output=target_dir / "archlinux-revoked",
+        output=target_dir / "life-revoked",
     )
 
 
